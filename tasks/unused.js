@@ -108,6 +108,11 @@ module.exports = function (grunt) {
     // Output unused files list in console
     unused = _.difference(assets, links);
 
+    options.exclude.map((ex) => {
+      unused = _.filter(unused, (_unused) => !_unused.includes(ex));
+    });
+
+
     // output number of unused files
     if (unused.length) {
       grunt.log.warn(unused.length + ' unused file' + (unused.length === 1 ? '' : 's') + ':');
