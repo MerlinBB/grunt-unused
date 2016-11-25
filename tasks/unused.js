@@ -32,7 +32,8 @@ module.exports = function (grunt) {
       days: null,
       reportOutput: false,
       fail: false,
-      exclude: []
+      exclude: [],
+      warnCaps: false
     });
 
     //get current date and time
@@ -105,6 +106,14 @@ module.exports = function (grunt) {
         }
       });
     });
+
+    if (options.warnCaps) {
+      assets.map((asset) => {
+        if (asset !== asset.toLowerCase()) {
+          grunt.log.warn(`${asset} contains uppercase characters`);
+        }
+      });
+    }
 
     // Output unused files list in console
     unused = _.difference(assets, links);
