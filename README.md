@@ -42,7 +42,10 @@ grunt.initConfig({
       days: 30,
       remove: false, // set to true to delete unused files from project
       reportOutput:'report.txt', // set to false to disable file output
-      fail: false // set to true to make the task fail when unused files are found
+      fail: false, // set to true to make the task fail when unused files are found
+      exclude: [],
+      warnCaps: false,
+      warnSpaces: false
     }
   }
 });
@@ -88,6 +91,24 @@ Type: `Boolean`
 Default value: `false`
 
 Allows the Grunt task to fail when unused files are found.
+
+### exclude
+Type: `Array`
+Default value: `[]`
+
+Partial match to exclude files, for example ["@2x", "@3x"]
+
+### warnCaps
+Type: `Boolean`
+Default value: `false`
+
+Will warn for file names with capital letters in
+
+### warnSpaces
+Type: `Boolean`
+Default value: `false`
+
+Will warn for file names with spaces in
 
 ## Release History
 * 0.2.3: Merge pull request [#8](https://github.com/ryanburgess/grunt-unused/pull/8)
