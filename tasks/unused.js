@@ -33,7 +33,8 @@ module.exports = function (grunt) {
       reportOutput: false,
       fail: false,
       exclude: [],
-      warnCaps: false
+      warnCaps: false,
+      warnSpaces: false
     });
 
     //get current date and time
@@ -111,6 +112,14 @@ module.exports = function (grunt) {
       assets.map((asset) => {
         if (asset !== asset.toLowerCase()) {
           grunt.log.warn(`${asset} contains uppercase characters`);
+        }
+      });
+    }
+
+    if (options.warnSpaces) {
+      assets.map((asset) => {
+        if (asset.includes(" ")) {
+          grunt.log.warn(`${asset} contains blank character`);
         }
       });
     }
